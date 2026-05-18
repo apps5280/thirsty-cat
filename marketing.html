@@ -106,9 +106,11 @@
   }
   .title-milky {
     /* 80% of title size with proportionally trimmed shadow offsets
-       (pink 5/5, dark 7/7) — mirrors stackedMilkyWay in GameView. */
+       (pink 5/5, dark 7/7) — mirrors stackedMilkyWay in GameView.
+       Slight positive top-margin gives the sub-brand breathing room
+       below the THIRSTY CAT: drop shadow rather than crowding it. */
     font-size: clamp(38px, 8.8vw, 76px);
-    margin-top: -16px;
+    margin-top: 8px;
     text-shadow:
       -3px -3px 0 var(--ink), 0 -3px 0 var(--ink), 3px -3px 0 var(--ink),
       -3px  0   0 var(--ink),                       3px  0   0 var(--ink),
@@ -269,7 +271,7 @@
       <span class="title-layered title-thirsty">THIRSTY CAT:</span><br>
       <span class="title-layered title-milky">MILKY WAY</span>
     </h1>
-    <p class="tagline">A cow. Some aliens. One udder.</p>
+    <p class="tagline">A cow. Some aliens. Udderly ridiculous.</p>
     <p class="blurb">Pull the udder. Aim the arc. Fire milk projectiles at waves of milk-thirsty alien invaders. Arcade wave-defense for iOS — storybook art, escalating chaos, and a cosmic backstory weirder than it has any right to be.</p>
     <a class="cta" href="#" aria-disabled="true">Coming Soon to the App Store</a>
     <p class="cta-note">Free to play. Headphones welcome but not required.</p>
