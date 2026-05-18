@@ -5,6 +5,9 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Thirsty Cat — Milky Way</title>
 <meta name="description" content="A cow's farm is invaded by milk-thirsty aliens. Pull her udder, aim the arc, fire. Arcade wave defense across two biomes — Farm and Desert.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bowlby+One&display=swap" rel="stylesheet">
 <style>
   :root {
     --bg: #0d0a07;
@@ -14,7 +17,13 @@
     --accent: #ff9a3d;
     --accent-soft: rgba(255, 154, 61, 0.10);
     --card: #15110c;
-    --milk: #f6f0e4;
+    /* In-app brand palette — these are the exact RGB values used
+       by the title-screen layered logo in GameView.swift. Keep in
+       sync if the in-app colors ever shift. */
+    --cream:  #FFFBE8;
+    --yellow: #FFD93D;
+    --pink:   #D14E87;
+    --ink:    #1A1A28;
   }
   * { box-sizing: border-box; }
   html, body {
@@ -36,7 +45,7 @@
   /* --- Hero ---------------------------------------------------- */
   .hero {
     text-align: center;
-    padding: 48px 12px 56px;
+    padding: 48px 12px 64px;
     border-bottom: 1px solid var(--rule);
   }
   .eyebrow {
@@ -46,28 +55,72 @@
     text-transform: uppercase;
     margin: 0 0 12px;
   }
-  .hero h1 {
-    font-size: 56px;
-    font-weight: 800;
-    margin: 0 0 6px;
-    letter-spacing: -0.03em;
-    background: linear-gradient(135deg, var(--milk) 0%, var(--accent) 100%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
+
+  /* --- In-app logo treatment (Bowlby One + layered shadows) -----
+     Ports the title-screen layout from GameView.swift:
+       1. Yellow "▶ ARCADE DEFENSE" pill (rotated -3°)
+       2. THIRSTY CAT: at full size (rotated -2°)
+       3. MILKY WAY at 80% size, pulled close via negative margin
+     The layered cream/ink/pink/dark stack is rendered via
+     text-shadow (8 outline offsets + pink mid + dark drop) so the
+     same visual structure works as a static web logo.
+  ----------------------------------------------------------------- */
+  .arcade-tag {
+    display: inline-block;
+    background: var(--yellow);
+    color: var(--ink);
+    border: 2px solid var(--ink);
+    border-radius: 999px;
+    padding: 6px 16px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    font-size: 16px;
+    letter-spacing: 0.12em;
+    transform: rotate(-3deg);
+    box-shadow: 3px 3px 0 rgba(0,0,0,0.4);
+    margin-bottom: 24px;
   }
-  .hero .subtitle {
-    font-size: 18px;
-    color: var(--muted);
+  .title-stack {
+    line-height: 0.95;
     margin: 0 0 8px;
-    font-weight: 500;
-    letter-spacing: 0.08em;
-    text-transform: uppercase;
   }
+  .title-layered {
+    font-family: "Bowlby One", -apple-system, BlinkMacSystemFont, sans-serif;
+    color: var(--cream);
+    letter-spacing: -1px;
+    display: inline-block;
+    transform: rotate(-2deg);
+    line-height: 0.95;
+    margin: 0;
+  }
+  .title-thirsty {
+    font-size: clamp(48px, 11vw, 96px);
+    /* Outline (8-way @ 3px) + pink mid-shadow (6,6) + dark drop (9,9).
+       Order = front to back; first shadow is closest to the glyph. */
+    text-shadow:
+      -3px -3px 0 var(--ink), 0 -3px 0 var(--ink), 3px -3px 0 var(--ink),
+      -3px  0   0 var(--ink),                       3px  0   0 var(--ink),
+      -3px  3px 0 var(--ink), 0  3px 0 var(--ink), 3px  3px 0 var(--ink),
+      6px 6px 0 var(--pink),
+      9px 9px 0 rgba(0,0,0,0.4);
+  }
+  .title-milky {
+    /* 80% of title size with proportionally trimmed shadow offsets
+       (pink 5/5, dark 7/7) — mirrors stackedMilkyWay in GameView. */
+    font-size: clamp(38px, 8.8vw, 76px);
+    margin-top: -16px;
+    text-shadow:
+      -3px -3px 0 var(--ink), 0 -3px 0 var(--ink), 3px -3px 0 var(--ink),
+      -3px  0   0 var(--ink),                       3px  0   0 var(--ink),
+      -3px  3px 0 var(--ink), 0  3px 0 var(--ink), 3px  3px 0 var(--ink),
+      5px 5px 0 var(--pink),
+      7px 7px 0 rgba(0,0,0,0.4);
+  }
+
   .hero .tagline {
     font-size: 22px;
     color: var(--fg);
-    margin: 24px 0 12px;
+    margin: 32px 0 12px;
     font-weight: 600;
   }
   .hero .blurb {
@@ -209,11 +262,13 @@
 <body>
 <main>
 
-  <!-- Hero -->
+  <!-- Hero — mirrors the in-app title screen layout -->
   <div class="hero">
-    <p class="eyebrow">An apps5280 game</p>
-    <h1>Thirsty Cat</h1>
-    <p class="subtitle">Milky Way</p>
+    <div class="arcade-tag">▶ ARCADE DEFENSE</div>
+    <h1 class="title-stack">
+      <span class="title-layered title-thirsty">THIRSTY CAT:</span><br>
+      <span class="title-layered title-milky">MILKY WAY</span>
+    </h1>
     <p class="tagline">A cow. Some aliens. One udder.</p>
     <p class="blurb">Pull the udder. Aim the arc. Fire milk projectiles at waves of milk-thirsty alien invaders. Arcade wave-defense for iOS — storybook art, escalating chaos, and a cosmic backstory weirder than it has any right to be.</p>
     <a class="cta" href="#" aria-disabled="true">Coming Soon to the App Store</a>
