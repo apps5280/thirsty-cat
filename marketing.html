@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thirsty Cat — Milky Way</title>
+<meta name="description" content="A cow's farm is invaded by milk-thirsty aliens. Pull her udder, aim the arc, fire. Arcade wave defense across two biomes — Farm and Desert.">
+<style>
+  :root {
+    --bg: #0d0a07;
+    --fg: #f2ede4;
+    --muted: #9a8f7f;
+    --rule: #2a241d;
+    --accent: #ff9a3d;
+    --accent-soft: rgba(255, 154, 61, 0.10);
+    --card: #15110c;
+    --milk: #f6f0e4;
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+    -webkit-font-smoothing: antialiased;
+  }
+  main {
+    max-width: 880px;
+    margin: 0 auto;
+    padding: 56px 24px 80px;
+  }
+
+  /* --- Hero ---------------------------------------------------- */
+  .hero {
+    text-align: center;
+    padding: 48px 12px 56px;
+    border-bottom: 1px solid var(--rule);
+  }
+  .eyebrow {
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+  .hero h1 {
+    font-size: 56px;
+    font-weight: 800;
+    margin: 0 0 6px;
+    letter-spacing: -0.03em;
+    background: linear-gradient(135deg, var(--milk) 0%, var(--accent) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .hero .subtitle {
+    font-size: 18px;
+    color: var(--muted);
+    margin: 0 0 8px;
+    font-weight: 500;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+  }
+  .hero .tagline {
+    font-size: 22px;
+    color: var(--fg);
+    margin: 24px 0 12px;
+    font-weight: 600;
+  }
+  .hero .blurb {
+    max-width: 560px;
+    margin: 0 auto 28px;
+    color: var(--fg);
+    opacity: 0.80;
+  }
+  .cta {
+    display: inline-block;
+    background: var(--accent);
+    color: #1a0f00 !important;
+    padding: 14px 28px;
+    border-radius: 12px;
+    font-weight: 700;
+    text-decoration: none;
+    letter-spacing: 0.01em;
+    transition: transform 0.15s ease;
+  }
+  .cta:hover { transform: translateY(-1px); }
+  .cta-note {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 12px;
+  }
+
+  /* --- Section --------------------------------------------------- */
+  section {
+    padding: 56px 0;
+    border-bottom: 1px solid var(--rule);
+  }
+  section:last-of-type { border-bottom: none; }
+  h2 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 12px;
+    letter-spacing: -0.02em;
+  }
+  h3 {
+    font-size: 17px;
+    font-weight: 600;
+    margin: 0 0 6px;
+  }
+  p { margin: 0 0 12px; }
+  .lead {
+    color: var(--muted);
+    margin-bottom: 24px;
+  }
+
+  /* --- Cards / grids ------------------------------------------- */
+  .grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+    gap: 14px;
+    margin-top: 8px;
+  }
+  .card {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 22px 24px;
+  }
+  .card .biome-label {
+    color: var(--accent);
+    font-size: 12px;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    font-weight: 700;
+    margin: 0 0 4px;
+  }
+  .card .hero-name {
+    font-size: 22px;
+    font-weight: 700;
+    margin: 0 0 6px;
+  }
+  .card .weapon {
+    color: var(--muted);
+    font-size: 14px;
+    margin: 0 0 12px;
+    font-style: italic;
+  }
+  .card .desc {
+    margin: 0;
+    font-size: 14px;
+    line-height: 1.55;
+  }
+
+  /* --- Feature list --------------------------------------------- */
+  .features {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+  }
+  .features li {
+    padding-left: 28px;
+    position: relative;
+  }
+  .features li::before {
+    content: "•";
+    position: absolute;
+    left: 8px;
+    color: var(--accent);
+    font-size: 22px;
+    line-height: 1;
+    top: 2px;
+  }
+  .features li strong { display: block; margin-bottom: 2px; }
+  .features li span { color: var(--muted); font-size: 14px; }
+
+  /* --- Lore card --------------------------------------------- */
+  .lore {
+    background: var(--card);
+    border: 1px solid var(--rule);
+    border-radius: 14px;
+    padding: 28px;
+    margin-top: 8px;
+    font-style: italic;
+    color: var(--fg);
+    opacity: 0.85;
+    font-size: 16px;
+  }
+
+  /* --- Footer --------------------------------------------------- */
+  footer {
+    margin-top: 64px;
+    padding-top: 24px;
+    border-top: 1px solid var(--rule);
+    color: var(--muted);
+    font-size: 13px;
+    text-align: center;
+  }
+  footer a { color: var(--muted); margin: 0 8px; }
+  footer a:hover { color: var(--fg); }
+</style>
+</head>
+<body>
+<main>
+
+  <!-- Hero -->
+  <div class="hero">
+    <p class="eyebrow">An apps5280 game</p>
+    <h1>Thirsty Cat</h1>
+    <p class="subtitle">Milky Way</p>
+    <p class="tagline">A cow. Some aliens. One udder.</p>
+    <p class="blurb">Pull the udder. Aim the arc. Fire milk projectiles at waves of milk-thirsty alien invaders. Arcade wave-defense for iOS — storybook art, escalating chaos, and a cosmic backstory weirder than it has any right to be.</p>
+    <a class="cta" href="#" aria-disabled="true">Coming Soon to the App Store</a>
+    <p class="cta-note">Free to play. Headphones welcome but not required.</p>
+  </div>
+
+  <!-- Lore -->
+  <section>
+    <h2>The story</h2>
+    <p class="lead">Yes, there is one.</p>
+    <div class="lore">
+      An ancient cosmic mother — the First Udder — once wandered the universe, and her milk became the oceans, rivers, and clouds of every world. When she rested, her essence scattered into bloodlines across the cosmos. Her descendants still produce trace amounts of her power: <strong>Star Milk</strong>. The <strong>Lacteans</strong>, an alien empire, have been hunting bloodline carriers for millennia. They came for the cow. She fled — and discovered she's not the last of her kind.
+    </div>
+  </section>
+
+  <!-- Heroes -->
+  <section>
+    <h2>Two heroes, two biomes</h2>
+    <p class="lead">v1 launches with two protagonists, deliberately chosen to feel different in your hands.</p>
+    <div class="grid">
+      <div class="card">
+        <p class="biome-label">Biome 1 · Farm</p>
+        <p class="hero-name">The Cow</p>
+        <p class="weapon">Milk arc projectiles · aim & shoot</p>
+        <p class="desc">Tap and pull the udder to fire arcs at incoming Lacteans. The pull distance controls power, the angle controls the arc. A bright, twilight farm full of escalating chaos — chickens, dogs, and a UFO that should not be there.</p>
+      </div>
+      <div class="card">
+        <p class="biome-label">Biome 2 · Desert</p>
+        <p class="hero-name">The Camel</p>
+        <p class="weapon">Pressurized chargeable spit · charge & release</p>
+        <p class="desc">Hold to build pressure. Release for variable-damage spit. Quick taps for pip-shots; long holds for boss-piercing pressure jets. Rust-and-sunset palette, hostile wildlife, and a different rhythm of combat from the farm.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Features -->
+  <section>
+    <h2>Built with respect for your time</h2>
+    <ul class="features">
+      <li><strong>No ads, no tracking.</strong><span>No analytics SDKs. No data leaves your device.</span></li>
+      <li><strong>Game Center, optional.</strong><span>Leaderboards and achievements if you want them. Fully playable without signing in.</span></li>
+      <li><strong>Arcade pacing.</strong><span>Sessions ramp from minute one. No tutorials longer than a wave.</span></li>
+      <li><strong>Storybook art.</strong><span>Thick-line cartoon characters with pop-art energy. Hand-tuned, not asset-flipped.</span></li>
+      <li><strong>Two biomes at launch.</strong><span>More chapters in development. The cosmology has room for pufferfish, milking robots, and walruses.</span></li>
+      <li><strong>One-handed play.</strong><span>Portrait mode. Designed for the bus, the couch, or under the desk during a slow meeting.</span></li>
+    </ul>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>
+      <a href="privacy.html">Privacy Policy</a> ·
+      <a href="support.html">Support</a> ·
+      <a href="mailto:apps5280@gmail.com">Contact</a>
+    </p>
+    <p>&copy; Thirsty Cat.</p>
+  </footer>
+
+</main>
+</body>
+</html>

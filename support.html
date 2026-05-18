@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Thirsty Cat — Support</title>
+<style>
+  :root {
+    --bg: #ffffff;
+    --fg: #1c1c1e;
+    --muted: #5c5c5e;
+    --rule: #e5e5e7;
+    --accent: #ff7a3d;
+    --card: #f6f6f8;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #121214;
+      --fg: #f2f2f4;
+      --muted: #9c9ca0;
+      --rule: #2a2a2e;
+      --accent: #ff9a66;
+      --card: #1c1c1f;
+    }
+  }
+  * { box-sizing: border-box; }
+  html, body {
+    margin: 0;
+    padding: 0;
+    background: var(--bg);
+    color: var(--fg);
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 16px;
+    line-height: 1.55;
+  }
+  main {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 48px 24px 96px;
+  }
+  h1 {
+    font-size: 28px;
+    font-weight: 700;
+    margin: 0 0 4px;
+    letter-spacing: -0.02em;
+  }
+  h2 {
+    font-size: 18px;
+    font-weight: 600;
+    margin: 32px 0 8px;
+    letter-spacing: -0.01em;
+  }
+  h3 {
+    font-size: 15px;
+    font-weight: 600;
+    margin: 18px 0 4px;
+  }
+  p {
+    margin: 0 0 12px;
+  }
+  .eyebrow {
+    color: var(--muted);
+    font-size: 13px;
+    letter-spacing: 0.04em;
+    text-transform: uppercase;
+    margin: 0 0 24px;
+  }
+  hr {
+    border: none;
+    border-top: 1px solid var(--rule);
+    margin: 32px 0;
+  }
+  a { color: var(--accent); }
+  ul { margin: 0 0 12px; padding-left: 22px; }
+  li { margin-bottom: 4px; }
+  .card {
+    background: var(--card);
+    border-radius: 12px;
+    padding: 16px 20px;
+    margin: 32px 0;
+  }
+  .card h2 { margin-top: 0; }
+  .contact-button {
+    display: inline-block;
+    background: var(--accent);
+    color: white !important;
+    padding: 10px 18px;
+    border-radius: 10px;
+    font-weight: 600;
+    text-decoration: none;
+    margin-top: 4px;
+  }
+  footer {
+    color: var(--muted);
+    font-size: 13px;
+    margin-top: 48px;
+  }
+</style>
+</head>
+<body>
+<main>
+
+<p class="eyebrow">Thirsty Cat</p>
+<h1>Support</h1>
+<p>Thirsty Cat is a wave-defense arcade game where a cow defends her farm from milk-thirsty alien invaders. If something isn't working the way you'd expect — or you just want to ask a question — this page has the most common answers and a contact link below.</p>
+
+<hr>
+
+<h2>Common questions</h2>
+
+<h3>How do I shoot?</h3>
+<p>Touch and pull on the cow's udder to aim. Release to fire a milk arc. The pull distance controls power, and the angle controls the arc. The longer you've played, the more your fingers will know where to land it without thinking.</p>
+
+<h3>Enemies are coming too fast.</h3>
+<p>Thirsty Cat's difficulty ramps with each wave by design — you're meant to lose eventually. If you're stuck on a particular wave, try chaining shots without releasing your touch in between (each release fires one shot), and prioritize the enemies closest to your cow over the ones farther away.</p>
+
+<h3>Game Center says I'm not signed in.</h3>
+<p>Open <strong>Settings → Game Center</strong> in iOS (not in the game) and sign in to your Apple ID's Game Center. Thirsty Cat uses Game Center for leaderboards and achievements — neither is required to play, but if you want your scores to count online, you need to be signed in.</p>
+
+<h3>My progress disappeared after I reinstalled.</h3>
+<p>Thirsty Cat saves your progress locally on your device. Deleting and reinstalling the app — or switching to a new phone without a full backup — clears your high score and any unlocked content. Game Center leaderboard scores survive because Apple holds those.</p>
+
+<h3>The audio is delayed or muted.</h3>
+<p>Other apps (music, podcasts, calls) can interrupt the game's audio session. Try closing those and relaunching Thirsty Cat. If you're using Bluetooth speakers or headphones, expect slightly higher latency — wired or on-device speakers will feel more responsive.</p>
+
+<h3>I have an idea or a bug report.</h3>
+<p>Email it. Bug reports especially are welcome — include your iPhone model and iOS version if you can. Reproducible steps help most. Screenshots or a screen recording are gold.</p>
+
+<hr>
+
+<div class="card">
+<h2>Still need help?</h2>
+<p>Email <a href="mailto:apps5280@gmail.com">apps5280@gmail.com</a> and I'll respond as soon as I can. Thirsty Cat is a small operation — please be patient on weekends.</p>
+<p><a class="contact-button" href="mailto:apps5280@gmail.com">Email Support</a></p>
+</div>
+
+<hr>
+
+<h2>Privacy</h2>
+<p>Thirsty Cat collects no personal data. The <a href="privacy.html">Privacy Policy</a> covers exactly what does and doesn't happen with your information.</p>
+
+<footer>
+<p>&copy; Thirsty Cat.</p>
+</footer>
+
+</main>
+</body>
+</html>
